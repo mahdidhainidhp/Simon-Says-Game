@@ -30,3 +30,31 @@ function getRandomColor() {
     const randomNumber = Math.floor(Math.random() * 4);
     return buttonColors[randomNumber];
 }
+
+// Handle button clicks
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', handleButtonClick);
+});
+  
+function handleButtonClick(event) {
+    const userChosenColor = event.target.id;
+    userClickedPattern.push(userChosenColor);
+  
+    soundOn(userChosenColor);
+    clickAnimation(userChosenColor);
+}
+
+// function to play the sound
+function soundOn(audioName) {
+    const sound = new Audio(`sounds/${audioName}.mp3`);
+    sound.play();
+}
+
+// function to animate the block when clicked
+function clickAnimation(currentColor) {
+    const button = document.getElementById(currentColor);
+    button.classList.add('pressed');
+    setTimeout(() => {
+      button.classList.remove('pressed');
+    }, 100);
+}
