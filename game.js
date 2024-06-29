@@ -67,3 +67,23 @@ function clickAnimation(currentColor) {
       button.classList.remove('pressed');
     }, 100);
 }
+
+// this function will manage the game over state
+function handleGameOver() {
+  soundOn("wrong");
+  document.body.classList.add('game-over');
+  document.querySelector("#level-title").textContent = "Game Over, Press Any Key to Restart";
+
+  setTimeout(() => {
+    document.body.classList.remove('game-over');
+  }, 200);
+
+  startOver();
+}
+
+// reset the game
+function startOver() {
+    level = 0;
+    gamePattern = [];
+    started = false;
+}
