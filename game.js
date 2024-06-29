@@ -11,3 +11,22 @@ document.addEventListener('keypress', () => {
     started = true;
   }
 });
+
+function nextSequence() { 
+    // this function increments the level, updates the title, chooses a random color, adds it to the sequence, and animates the chosen button.  
+  userClickedPattern = [];
+  level++;
+  document.querySelector("#level-title").textContent = `Level ${level}`;
+
+  const randomChosenColor = getRandomColor();
+  gamePattern.push(randomChosenColor);
+
+  animateButton(randomChosenColor);
+  playSound(randomChosenColor);
+}
+
+// this function will generate random colors to handle its selection
+function getRandomColor() {
+    const randomNumber = Math.floor(Math.random() * 4);
+    return buttonColors[randomNumber];
+}
