@@ -51,6 +51,7 @@ function handleButtonClick(event) {
   
     soundOn(userChosenColor);
     clickAnimation(userChosenColor);
+    checkAnswer(userClickedPattern.length - 1);
 }
 
 // function to play the sound
@@ -66,6 +67,16 @@ function clickAnimation(currentColor) {
     setTimeout(() => {
       button.classList.remove('pressed');
     }, 100);
+}
+
+function checkAnswer(currentLevel) {
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+        if (userClickedPattern.length === gamePattern.length) {
+            setTimeout(nextSequence, 1000);
+        }
+    } else {
+        handleGameOver();
+    }
 }
 
 // this function will manage the game over state
