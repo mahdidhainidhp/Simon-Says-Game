@@ -22,13 +22,22 @@ function nextSequence() {
   gamePattern.push(randomChosenColor);
 
   animateButton(randomChosenColor);
-  playSound(randomChosenColor);
+  soundOn(randomChosenColor);
 }
 
 // this function will generate random colors to handle its selection
 function getRandomColor() {
     const randomNumber = Math.floor(Math.random() * 4);
     return buttonColors[randomNumber];
+}
+
+// this function highlights the block
+function animateButton(color) {
+    const button = document.getElementById(color);
+    button.style.opacity = 0.5;
+    setTimeout(() => {
+        button.style.opacity = 1;
+    }, 500);
 }
 
 // Handle button clicks
